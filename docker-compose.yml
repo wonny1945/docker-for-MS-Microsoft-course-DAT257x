@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  cntk-jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: cntk-custom-image
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/workspace
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root 
